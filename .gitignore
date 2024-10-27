@@ -3,3 +3,16 @@
 
 # Ignore Gradle build output directory
 build
+
+# Ignore files
+travelCarry.png
+travelCarryClassDiagram.png
+travelCarryClassDiagram.puml
+travelCarryEntityDiagram.png
+travelCarryEntityDiagram.puml
+travelCarryObjDiagram.png
+travelCarryObjDiagram.puml
+travelCarrySeqDiagram.png
+travelCarrySeqDiagram.puml
+useCaseDiagram.png
+useCaseDiagram.puml
