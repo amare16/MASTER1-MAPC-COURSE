@@ -3,12 +3,61 @@
  */
 package org.example;
 
-public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
 
+
+import org.example.td1.Chapitre;
+import org.example.td1.Memoire;
+import org.example.td2.Card;
+import org.example.td2.MultiDeck;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class App {
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        // Create pages for each chapter
+        List<String> pages1 = Arrays.asList("Page 1 of Chapter 1", "Page 2 of Chapter 1", "Page 3 of Chapter 1");
+        List<String> pages2 = Arrays.asList("Page 1 of Chapter 2", "Page 2 of Chapter 2");
+
+        // Create Chapitre instances
+        Chapitre chapitre1 = new Chapitre("Introduction", pages1);
+        Chapitre chapitre2 = new Chapitre("Main Content", pages2);
+
+        // Create a Memoire instance that contains these chapters
+        List<Chapitre> chapitres = Arrays.asList(chapitre1, chapitre2);
+        Memoire memoire = new Memoire("My Memoire Title", chapitres);
+
+        // Print the title and total page count of the Memoire
+        System.out.println("Memoire Title: " + memoire.titre());
+        System.out.println("Total Pages in Memoire: " + memoire.taille());
+
+        // Print each chapter's title and page count
+        System.out.println("\nChapters in the Memoire:");
+        for (Chapitre chapitre : chapitres) {
+            System.out.println(" - " + chapitre.titre() + " (Pages: " + chapitre.taille() + ")");
+        }
+
+        // Create an instance of a specific card
+        Card.CardInstance aceOfSpades = new Card.CardInstance(Card.CardEnum.ACE_OF_SPADES);
+        System.out.println("Card: " + aceOfSpades);
+        System.out.println("Rank: " + aceOfSpades.getRank());
+        System.out.println("Suit: " + aceOfSpades.getSuit());
+        System.out.println("Color: " + aceOfSpades.getColor());
+
+        // Create a joker instance
+        Card.CardInstance redJoker = new Card.CardInstance(Card.CardEnum.RED_JOKER);
+        System.out.println("Card: " + redJoker);
+        System.out.println("Rank: " + redJoker.getRank()); // Should be null
+        System.out.println("Suit: " + redJoker.getSuit()); // Should be null
+        System.out.println("Color: " + redJoker.getColor()); // Should be RED
+
+        // Demonstrate MultiDeck
+        MultiDeck originalDeck = new MultiDeck(2);
+        MultiDeck shallowCopy = new MultiDeck(originalDeck); // Shallow copy
+        MultiDeck deepCopy = originalDeck.deepCopy(originalDeck); // Deep copy
+
+        System.out.println("Original Deck: " + originalDeck.getDecks());
+        System.out.println("Shallow Copy Deck: " + shallowCopy.getDecks());
+        System.out.println("Deep Copy Deck: " + deepCopy.getDecks());
     }
 }
